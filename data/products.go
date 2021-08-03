@@ -3,7 +3,6 @@ package data
 import (
 	"encoding/json"
 	"io"
-	"time"
 )
 
 type Product struct {
@@ -11,9 +10,6 @@ type Product struct {
 	Name        string  `json:"name"`
 	Description string  `json:"description"`
 	Price       float32 `json:"price"`
-	CreatedOn   string  `json:"-"` // omitting the output all together
-	UpdatedOn   string  `json:"-"`
-	DeletedOn   string  `json:"-"`
 }
 
 // defining a type of []Product
@@ -45,15 +41,5 @@ var productList = []*Product{
 		Name:        "Latte",
 		Description: "Latte",
 		Price:       5,
-		CreatedOn:   time.Now().UTC().String(),
-		UpdatedOn:   time.Now().UTC().String(),
-	},
-	&Product{
-		ID:          2,
-		Name:        "Latte",
-		Description: "Latte",
-		Price:       5,
-		CreatedOn:   time.Now().UTC().String(),
-		UpdatedOn:   time.Now().UTC().String(),
 	},
 }

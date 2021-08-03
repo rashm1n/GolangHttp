@@ -54,7 +54,6 @@ func (p Products) getProduct(w http.ResponseWriter, r *http.Request) {
 func (p Products) addProduct(w http.ResponseWriter, r *http.Request) {
 	product := &data.Product{}
 	err := product.FromJSON(r.Body)
-
 	if err != nil {
 		http.Error(w, "error", http.StatusBadRequest)
 		return

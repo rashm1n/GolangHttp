@@ -2,6 +2,7 @@ package main
 
 import (
 	"GolangHttp/handlers"
+	"fmt"
 	"log"
 	"net/http"
 	"os"
@@ -14,8 +15,14 @@ func main() {
 
 	productsHandler := handlers.NewProducts(logger)
 
+	fun := func(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprintf(w, "hiiiii")
+	}
+
 	productServeMux := http.NewServeMux()
 	productServeMux.Handle("/api/products/", productsHandler)
+	productServeMux.Handle("/halo", http.HandlerFunc(fun))
+
 	// create a new http server
 	server := http.Server{
 		Addr:         ":9090",
